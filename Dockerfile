@@ -1,8 +1,9 @@
 FROM paulflorea/python3-uwsgi:alpine
 
-# Install Node.js
+# Install Node.js and git
 RUN apk update && apk upgrade && apk add --no-cache --update \
-        nodejs
+        nodejs \
+        git
 
 # Safely updates NPM
 RUN npm install -g npm --prefix=/usr/local
