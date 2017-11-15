@@ -1,7 +1,9 @@
-FROM paulflorea/python3-uwsgi:latest
+FROM paulflorea/python3-uwsgi:alpine
 
-# install node
-RUN apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
-RUN apt-get install -y nodejs
-RUN npm install npm@latest -g
+# Install Node.js
+RUN apk update && apk upgrade && apk add --no-cache --update \
+        nodejs
+
+# Safely updates NPM
+RUN npm install -g npm --prefix=/usr/local
+RUN ln -s -f /usr/local/bin/npm /usr/bin/npm 
