@@ -1,4 +1,4 @@
-FROM paulflorea/python3-uwsgi:alpine
+FROM paulflorea/python3-uwsgi:alpine-test
 
 # Install Node.js and git
 RUN apk update && apk upgrade && apk add --no-cache --update \
