@@ -3,7 +3,9 @@ FROM paulflorea/python3-uwsgi:alpine-test
 # Install Node.js and git
 RUN apk update && apk upgrade && apk add --no-cache --update \
         nodejs \
-        git
+        nodejs-npm \
+        git \
+        && rm -rf /var/cache/apk/* # Delete the cache folder to save some space
 
 # Safely updates NPM
 RUN npm install -g npm --prefix=/usr/local
